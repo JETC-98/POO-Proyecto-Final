@@ -1,2 +1,2 @@
 Esto es una prueba
-prueba branch2
+prueba branch
