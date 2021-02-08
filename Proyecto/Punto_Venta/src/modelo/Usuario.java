@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import vistas.Agregar_Producto;
 import vistas.Agregar_Usuario;
+import vistas.Login;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Usuario {
     private int id;
     private String nombre;
     private boolean admin;
-    private String password;
+    private String contrasena;
     
     public static final String URL = "jdbc:mysql://localhost:3306/Escuela";
     public static final String USERNAME = "root";
@@ -35,7 +36,7 @@ public class Usuario {
         this.id = id;
         this.nombre = nombre;
         this.admin = admin;
-        this.password = password;
+        this.contrasena = password;
     }
     
     public static Connection getConection()
@@ -53,7 +54,7 @@ public class Usuario {
         return con;
     }    
     
-    public void agregar_producto(Agregar_Producto nuevo)
+    public void agregar_producto(Agregar_Producto nuevo) throws Exception
     {
         Connection con= null;
         try
@@ -87,13 +88,13 @@ public class Usuario {
         }        
     }
     
-    public void agregar_usuario(Agregar_Usuario nuevo)
+    public void agregar_usuario(Agregar_Usuario nuevo) throws Exception
     {
         Connection con= null;
         try
         {
             con = getConection();
-            ps = con.prepareStatement("INSERT INTO usuarios (nombre,contraseña,permiso) VALUES(?,?,?)");
+            ps = con.prepareStatement("INSERT INTO usuarios (nombre,contrasena,permiso) VALUES(?,?,?)");
             ps.setString(1, nuevo.getTxtaddnombre());
             ps.setString(2, nuevo.getTxtaddpass());           
             ps.setBoolean(2, false);
@@ -117,4 +118,41 @@ public class Usuario {
             System.err.println(e);
         }        
     }
+    
+    public boolean log_in(String nuevo) throws Exception
+    {
+        boolean permiso=false;
+        Connection con=null;
+        try
+        {
+            con = getConection();
+            ps = con.prepareStatement("SELECT * FROM usuarios WHERE nombre = ?");
+            ps.setString(1, nuevo);
+            rs = ps.executeQuery();
+            
+            if(rs.next())
+            {                               
+                contrasena=rs.getString("contrasena");
+                admin=rs.getBoolean("permiso");
+                permiso = true;
+            }else
+            {
+                JOptionPane.showMessageDialog(null, "No existe ese usuario");
+            }
+            con.close();
+        }catch(Exception e)
+        {
+            System.err.println(e);
+        }        
+        return permiso;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+        
 }
