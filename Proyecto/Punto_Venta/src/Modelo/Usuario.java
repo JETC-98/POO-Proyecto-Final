@@ -3,32 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package modelo;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import sun.security.util.Password;
 import vistas.Agregar_Producto;
 
 /**
  *
- * @author black
+ * @author Daniel
  */
-public class Usuario 
-{
+public class Usuario {
+    
     private int id;
     private String nombre;
-    private Password password;
     private boolean admin;
+    private String password;
+
     private static final String URL = "jdbc:mysql://localhost:3306/Escuela";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     PreparedStatement ps;
-    ResultSet rs;
+    ResultSet rs;    
+    
+    public Usuario(int id, String nombre, boolean admin, String password) {
+        this.id = id;
+        this.nombre = nombre;
+        this.admin = admin;
+        this.password = password;
+    }    
     
     private static Connection getConection()
     {
@@ -78,5 +84,7 @@ public class Usuario
         {
             System.err.println(e);
         }        
-    }
+    }    
+    
+    
 }
