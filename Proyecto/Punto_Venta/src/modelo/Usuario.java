@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import vistas.Agregar_Producto;
+import vistas.Agregar_Usuario;
 
 /**
  *
@@ -58,7 +59,7 @@ public class Usuario {
         try
         {
             con = getConection();
-            ps = con.prepareStatement("INSERT INTO producto (ID,nombre,marca,compra,venta,cantidad) VALUES(?,?,?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO productos (ID,nombre,marca,compra,venta,cantidad) VALUES(?,?,?,?,?,?)");
             ps.setInt(1, nuevo.getTxtaddidentificador());
             ps.setString(2, nuevo.getTxtaddnombre());
             ps.setString(3, nuevo.getTxtaddmarca());
@@ -86,4 +87,34 @@ public class Usuario {
         }        
     }
     
+    public void agregar_usuario(Agregar_Usuario nuevo)
+    {
+        Connection con= null;
+        try
+        {
+            con = getConection();
+            ps = con.prepareStatement("INSERT INTO usuarios (nombre,contraseña,permiso) VALUES(?,?,?)");
+            ps.setString(1, nuevo.getTxtaddnombre());
+            ps.setString(2, nuevo.getTxtaddpass());           
+            ps.setBoolean(2, false);
+            
+            int res= ps.executeUpdate();
+            
+            if(res>0)
+            {
+                JOptionPane.showMessageDialog(null, "Persona guardada");
+                //limpiarcajas();
+            }else
+            {
+                JOptionPane.showMessageDialog(null, "Error al guardar persona");
+                //limpiarcajas();
+            }
+            
+            con.close();
+            
+        }catch(Exception e)
+        {
+            System.err.println(e);
+        }        
+    }
 }
