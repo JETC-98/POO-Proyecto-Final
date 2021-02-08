@@ -54,30 +54,30 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton5" pref="150" max="32767" attributes="0"/>
-                              <Component id="jButton1" max="32767" attributes="0"/>
+                              <Component id="bedit_producto" pref="150" max="32767" attributes="0"/>
+                              <Component id="bventas" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton2" pref="150" max="32767" attributes="0"/>
-                              <Component id="jButton6" max="32767" attributes="0"/>
+                              <Component id="breporte_ventas" pref="150" max="32767" attributes="0"/>
+                              <Component id="bborrar_producto" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton3" max="32767" attributes="0"/>
-                              <Component id="jButton7" pref="150" max="32767" attributes="0"/>
+                              <Component id="binventario" max="32767" attributes="0"/>
+                              <Component id="badd_user" pref="150" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton4" pref="150" max="32767" attributes="0"/>
-                              <Component id="jButton8" max="32767" attributes="0"/>
+                              <Component id="badd_producto" pref="150" max="32767" attributes="0"/>
+                              <Component id="bborrar_user" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="536" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel1" max="32767" attributes="0"/>
-                              <Component id="jButton9" max="32767" attributes="0"/>
+                              <Component id="bcerrar_sesion" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -92,20 +92,20 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="jButton4" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="bventas" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="breporte_ventas" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="binventario" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="badd_producto" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton8" pref="150" max="32767" attributes="0"/>
-                      <Component id="jButton7" max="32767" attributes="0"/>
-                      <Component id="jButton6" max="32767" attributes="0"/>
-                      <Component id="jButton5" max="32767" attributes="0"/>
+                      <Component id="bborrar_user" pref="150" max="32767" attributes="0"/>
+                      <Component id="badd_user" max="32767" attributes="0"/>
+                      <Component id="bborrar_producto" max="32767" attributes="0"/>
+                      <Component id="bedit_producto" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="88" max="32767" attributes="0"/>
-                  <Component id="jButton9" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="bcerrar_sesion" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -123,47 +123,47 @@
             <Property name="text" type="java.lang.String" value="Menu"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="bventas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ventas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="breporte_ventas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reporte de Ventas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="binventario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Inventario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="badd_producto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="bedit_producto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton6">
+        <Component class="javax.swing.JButton" name="bborrar_producto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Borrar Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton7">
+        <Component class="javax.swing.JButton" name="badd_user">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar Usuario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton8">
+        <Component class="javax.swing.JButton" name="bborrar_user">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar Usuario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton9">
+        <Component class="javax.swing.JButton" name="bcerrar_sesion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
           </Properties>
