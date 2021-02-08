@@ -23,6 +23,7 @@ public class Cliente {
         this.direccion = direccion;
         this.RFC = RFC;
         this.telefono = telefono;
+        System.out.println("esto es una prueba");
     }
     
     
