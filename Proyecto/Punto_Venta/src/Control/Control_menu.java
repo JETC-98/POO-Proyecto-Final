@@ -41,9 +41,11 @@ public class Control_menu implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         menu_principal.dispose();
+        
         if(menu_principal.getBventas()== ae.getSource()) 
         {
             Ventas venta=new Ventas();
+            Control_ventas cventas=new Control_ventas(venta);
             venta.setVisible(true);
             
             

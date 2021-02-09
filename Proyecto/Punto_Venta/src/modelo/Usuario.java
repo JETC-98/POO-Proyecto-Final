@@ -20,6 +20,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Daniel
@@ -102,8 +104,8 @@ public class Usuario {
     
     public boolean log_in(String nuevo) throws Exception
     {
-        String novo=nuevo;
-        boolean permiso=false;
+        
+        boolean entrar=false;
         Connection con=null;
             con = getConection();
             ps = con.prepareStatement("SELECT * FROM usuarios WHERE nombre = ?");
@@ -113,13 +115,37 @@ public class Usuario {
             {                               
                 contrasena=rs.getString("contrasena");
                 admin=rs.getInt("permiso");
-                permiso = true;
+                entrar = true;
             }
                         
             con.close();
             
-        return permiso;
+        return entrar;
     }
+    
+    public Producto getproduct(int id) throws Exception
+    {        
+        Producto p;
+        Connection con=null;
+            con = getConection();
+            ps = con.prepareStatement("SELECT * FROM productos WHERE id = ?");
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            
+            if(rs.next())
+            {                               
+                p=new Producto(rs.getInt("id"), rs.getString("nombre"), rs.getString("marca"), rs.getFloat("compra"), rs.getFloat("venta"), rs.getInt("cantidad"));
+                                
+            }else
+            {
+                p=new Producto(0,null,null,0,0,0);
+                
+            }
+            
+            con.close();        
+            
+            return p;
+    } 
 
     public int isAdmin() {
         return admin;
@@ -128,5 +154,43 @@ public class Usuario {
     public String getContrasena() {
         return contrasena;
     }
+    
+    public JTable addlista_de_compras(JTable tabla,Producto producto,int cantidad)
+    {
+        float total= producto.getCosto_Venta()*cantidad;
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model.addRow(new Object[]{producto.getNombre(), producto.getMarca(), producto.getCosto_Venta(), cantidad,total});
+        return tabla;
+    }
+    
+    public JTable removelista_de_compras(JTable tabla)
+    {
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        int row = tabla.getSelectedRow();
+        if(row==-1)
+        {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun objeto");
+        }else{
+            model.removeRow(row);
+        }
+                
+        return tabla;
+    }
+    
+    public String close_sale(JTable tabla)
+    {
+        float total=0;
+        String stotal;
+        int rownum;
+        rownum = tabla.getRowCount();
         
+        for(int i=0;i<rownum;i++)
+        {
+            total=total + Float.parseFloat((String.valueOf(tabla.getValueAt(i, 4))))  ;
+        }
+        
+        stotal= String.valueOf(total);
+        
+        return stotal;
+    }
 }

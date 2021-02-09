@@ -21,6 +21,8 @@ import vistas.Menu;
 public class Control_login implements ActionListener{
     private Login ingresar;
     private Menu main_menu;
+    public static int permiso;
+    
     public Control_login(Login ingresar)
     {
         this.ingresar=ingresar;
@@ -40,8 +42,10 @@ public class Control_login implements ActionListener{
                 {
                     if(ingresar.getTxtpass().equals(entrar.getContrasena()))
                     {
+                        permiso=entrar.isAdmin();
                         if(entrar.isAdmin()==1)
                         {
+                            
                             Menu nuevo =new Menu();
                             this.main_menu=nuevo;
                             nuevo.setVisible(true);
