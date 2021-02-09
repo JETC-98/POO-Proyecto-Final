@@ -14,7 +14,12 @@ import javax.swing.JOptionPane;
 import vistas.Agregar_Producto;
 import vistas.Agregar_Usuario;
 import vistas.Login;
-
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Daniel
@@ -23,7 +28,7 @@ public class Usuario {
     
     private int id;
     private String nombre;
-    private boolean admin;
+    private int admin;
     private String contrasena;
     
     public static final String URL = "jdbc:mysql://localhost:3306/Escuela";
@@ -32,11 +37,16 @@ public class Usuario {
     PreparedStatement ps;
     ResultSet rs;
     
-    public Usuario(int id, String nombre, boolean admin, String password) {
+    public Usuario(int id, String nombre, int admin, String password) {
         this.id = id;
         this.nombre = nombre;
         this.admin = admin;
         this.contrasena = password;
+    }
+    
+    public Usuario()
+    {
+        
     }
     
     public static Connection getConection()
@@ -57,8 +67,6 @@ public class Usuario {
     public void agregar_producto(Agregar_Producto nuevo) throws Exception
     {
         Connection con= null;
-        try
-        {
             con = getConection();
             ps = con.prepareStatement("INSERT INTO productos (ID,nombre,marca,compra,venta,cantidad) VALUES(?,?,?,?,?,?)");
             ps.setInt(1, nuevo.getTxtaddidentificador());
@@ -80,24 +88,17 @@ public class Usuario {
                 //limpiarcajas();
             }
             
-            con.close();
-            
-        }catch(Exception e)
-        {
-            System.err.println(e);
-        }        
+            con.close();      
     }
     
     public void agregar_usuario(Agregar_Usuario nuevo) throws Exception
     {
         Connection con= null;
-        try
-        {
             con = getConection();
             ps = con.prepareStatement("INSERT INTO usuarios (nombre,contrasena,permiso) VALUES(?,?,?)");
             ps.setString(1, nuevo.getTxtaddnombre());
             ps.setString(2, nuevo.getTxtaddpass());           
-            ps.setBoolean(2, false);
+            ps.setInt(3, 0);
             
             int res= ps.executeUpdate();
             
@@ -111,43 +112,31 @@ public class Usuario {
                 //limpiarcajas();
             }
             
-            con.close();
-            
-        }catch(Exception e)
-        {
-            System.err.println(e);
-        }        
+            con.close();       
     }
     
     public boolean log_in(String nuevo) throws Exception
     {
+        String novo=nuevo;
         boolean permiso=false;
         Connection con=null;
-        try
-        {
             con = getConection();
             ps = con.prepareStatement("SELECT * FROM usuarios WHERE nombre = ?");
             ps.setString(1, nuevo);
             rs = ps.executeQuery();
-            
             if(rs.next())
             {                               
                 contrasena=rs.getString("contrasena");
-                admin=rs.getBoolean("permiso");
+                admin=rs.getInt("permiso");
                 permiso = true;
-            }else
-            {
-                JOptionPane.showMessageDialog(null, "No existe ese usuario");
             }
+                        
             con.close();
-        }catch(Exception e)
-        {
-            System.err.println(e);
-        }        
+            
         return permiso;
     }
 
-    public boolean isAdmin() {
+    public int isAdmin() {
         return admin;
     }
 
