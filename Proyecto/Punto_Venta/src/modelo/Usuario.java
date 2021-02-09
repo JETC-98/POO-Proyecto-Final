@@ -98,19 +98,7 @@ public class Usuario {
             ps = con.prepareStatement("INSERT INTO usuarios (nombre,contrasena,permiso) VALUES(?,?,?)");
             ps.setString(1, nuevo.getTxtaddnombre());
             ps.setString(2, nuevo.getTxtaddpass());           
-            ps.setInt(3, 0);
-            
-            int res= ps.executeUpdate();
-            
-            if(res>0)
-            {
-                JOptionPane.showMessageDialog(null, "Persona guardada");
-                //limpiarcajas();
-            }else
-            {
-                JOptionPane.showMessageDialog(null, "Error al guardar persona");
-                //limpiarcajas();
-            }
+            ps.setInt(3, 0);            
             
             con.close();       
     }

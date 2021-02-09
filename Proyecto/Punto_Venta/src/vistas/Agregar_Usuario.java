@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -39,7 +40,7 @@ public class Agregar_Usuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtaddpasconfirm = new javax.swing.JPasswordField();
         badduser = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bregresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +64,7 @@ public class Agregar_Usuario extends javax.swing.JFrame {
 
         badduser.setText("Agregar Usuario");
 
-        jButton2.setText("Regresar");
+        bregresar.setText("Regresar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,7 +76,7 @@ public class Agregar_Usuario extends javax.swing.JFrame {
                 .addGap(477, 477, 477))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
@@ -96,7 +97,7 @@ public class Agregar_Usuario extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(59, 59, 59)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,9 +183,29 @@ public class Agregar_Usuario extends javax.swing.JFrame {
         return pass;
     }
 
+    public JButton getBadduser() {
+        return badduser;
+    }
+
+    public JButton getBregresar() {
+        return bregresar;
+    }
+
+    public void setTxtaddnombre(JTextField txtaddnombre) {
+        this.txtaddnombre = txtaddnombre;
+    }
+
+    public void setTxtaddpasconfirm(JPasswordField txtaddpasconfirm) {
+        this.txtaddpasconfirm = txtaddpasconfirm;
+    }
+
+    public void setTxtaddpass(JPasswordField txtaddpass) {
+        this.txtaddpass = txtaddpass;
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton badduser;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bregresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

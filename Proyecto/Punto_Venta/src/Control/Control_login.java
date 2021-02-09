@@ -20,7 +20,7 @@ import vistas.Menu;
  */
 public class Control_login implements ActionListener{
     private Login ingresar;
-    public Menu nuevo;
+    private Menu main_menu;
     public Control_login(Login ingresar)
     {
         this.ingresar=ingresar;
@@ -38,22 +38,18 @@ public class Control_login implements ActionListener{
                 verificador = entrar.log_in(ingresar.getTxtusuario());
                 if(verificador == true)
                 {
-                    System.out.println("hola");
                     if(ingresar.getTxtpass().equals(entrar.getContrasena()))
                     {
-                        System.out.println("hola");
                         if(entrar.isAdmin()==1)
                         {
-                            System.out.println("hola");
                             Menu nuevo =new Menu();
-                            this.nuevo=nuevo;
+                            this.main_menu=nuevo;
                             nuevo.setVisible(true);
                             ingresar.dispose();
-                            Control_menu cmenu= new Control_menu(this.nuevo);
+                            Control_menu cmenu= new Control_menu(this.main_menu);
                         }
                         else
                         {
-                            System.out.println("hola");
                             Menu nuevo =new Menu();                            
                             
                             nuevo.getBadd_producto().setVisible(false);
@@ -62,10 +58,10 @@ public class Control_login implements ActionListener{
                             nuevo.getBborrar_user().setVisible(false);
                             nuevo.getBcerrar_sesion().setVisible(false);
                             nuevo.getBedit_producto().setVisible(false);
-                            this.nuevo=nuevo;
+                            this.main_menu=nuevo;
                             nuevo.setVisible(true);
                             ingresar.dispose();
-                            Control_menu cmenu= new Control_menu(this.nuevo);
+                            Control_menu cmenu= new Control_menu(this.main_menu);
                             
                         }
                     }else

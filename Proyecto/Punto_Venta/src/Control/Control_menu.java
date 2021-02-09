@@ -7,7 +7,14 @@ package Control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import vistas.Agregar_Producto;
+import vistas.Agregar_Usuario;
+import vistas.Borrar_Producto;
+import vistas.Editar_Producto;
+import vistas.Eliminar_Usuario;
+import vistas.Inventario;
 import vistas.Menu;
+import vistas.Reporte_de_Ventas;
 import vistas.Ventas;
 
 /**
@@ -33,10 +40,9 @@ public class Control_menu implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
+        menu_principal.dispose();
         if(menu_principal.getBventas()== ae.getSource()) 
         {
-            System.out.println("hola");
             Ventas venta=new Ventas();
             venta.setVisible(true);
             menu_principal.dispose();
@@ -45,33 +51,50 @@ public class Control_menu implements ActionListener{
         
         if(menu_principal.getBreporte_ventas()== ae.getSource()) 
         {
-            
+            Reporte_de_Ventas reporte = new Reporte_de_Ventas();
+            reporte.setVisible(true);
+            menu_principal.dispose();
         }
                
         if(menu_principal.getBinventario()== ae.getSource()) 
         {
-            
+            Inventario inventario=new Inventario();
+            inventario.setVisible(true);
+            menu_principal.dispose();
         }
         
         if(menu_principal.getBadd_producto()== ae.getSource()) 
         {
-            
+            Agregar_Producto addproduct=new Agregar_Producto();
+            addproduct.setVisible(true);
+            menu_principal.dispose();
         }
         if(menu_principal.getBedit_producto()==ae.getSource())
         {
+            Editar_Producto editproduct = new Editar_Producto();
+            editproduct.setVisible(true);
+            menu_principal.dispose();
             
         }
         if(menu_principal.getBborrar_producto()==ae.getSource())
         {
-            
+            Borrar_Producto borrarproducto=new Borrar_Producto();
+            borrarproducto.setVisible(true);
+            menu_principal.dispose();
         }
         if(menu_principal.getBadd_user()==ae.getSource())
-        {
+        {                    
+            Agregar_Usuario Nuser=new Agregar_Usuario();
+            Control_Agregar_Usuario adduser=new Control_Agregar_Usuario(Nuser);            
+            Nuser.setVisible(true);
+            
             
         }        
         if(menu_principal.getBborrar_user()==ae.getSource())
         {
-            
+            Eliminar_Usuario usuario=new Eliminar_Usuario();
+            usuario.setVisible(true);
+            menu_principal.dispose();
         }        
     }
     
