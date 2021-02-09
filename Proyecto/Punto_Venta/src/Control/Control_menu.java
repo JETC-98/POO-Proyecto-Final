@@ -45,7 +45,7 @@ public class Control_menu implements ActionListener{
         {
             Ventas venta=new Ventas();
             venta.setVisible(true);
-            menu_principal.dispose();
+            
             
         }
         
@@ -53,34 +53,35 @@ public class Control_menu implements ActionListener{
         {
             Reporte_de_Ventas reporte = new Reporte_de_Ventas();
             reporte.setVisible(true);
-            menu_principal.dispose();
+            
         }
                
         if(menu_principal.getBinventario()== ae.getSource()) 
         {
             Inventario inventario=new Inventario();
             inventario.setVisible(true);
-            menu_principal.dispose();
+            
         }
         
         if(menu_principal.getBadd_producto()== ae.getSource()) 
         {
             Agregar_Producto addproduct=new Agregar_Producto();
+            Control_Agregar_producto caddproduct=new Control_Agregar_producto(addproduct);
             addproduct.setVisible(true);
-            menu_principal.dispose();
+            
         }
         if(menu_principal.getBedit_producto()==ae.getSource())
         {
             Editar_Producto editproduct = new Editar_Producto();
             editproduct.setVisible(true);
-            menu_principal.dispose();
+            
             
         }
         if(menu_principal.getBborrar_producto()==ae.getSource())
         {
             Borrar_Producto borrarproducto=new Borrar_Producto();
             borrarproducto.setVisible(true);
-            menu_principal.dispose();
+            
         }
         if(menu_principal.getBadd_user()==ae.getSource())
         {                    
@@ -94,7 +95,7 @@ public class Control_menu implements ActionListener{
         {
             Eliminar_Usuario usuario=new Eliminar_Usuario();
             usuario.setVisible(true);
-            menu_principal.dispose();
+            
         }        
     }
     

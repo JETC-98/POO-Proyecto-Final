@@ -69,26 +69,35 @@ public class Usuario {
     {
         Connection con= null;
             con = getConection();
-            ps = con.prepareStatement("INSERT INTO productos (ID,nombre,marca,compra,venta,cantidad) VALUES(?,?,?,?,?,?)");
+            ps = con.prepareStatement("INSERT INTO productos (id,nombre,marca,compra,venta,cantidad) VALUES(?,?,?,?,?,?)");            
             ps.setInt(1, nuevo.getTxtaddidentificador());
             ps.setString(2, nuevo.getTxtaddnombre());
             ps.setString(3, nuevo.getTxtaddmarca());
             ps.setFloat(4, nuevo.getTxtaddpcompra());
             ps.setFloat(5, nuevo.getTxtaddpventa());
-            ps.setInt(6, nuevo.getSpinneraddcantidad());                       
+            ps.setInt(6, nuevo.getSpinneraddcantidad());  
+            ps.executeUpdate();
             con.close();      
     }
     
     public void agregar_usuario(Agregar_Usuario nuevo) throws Exception
     {
         Connection con= null;
+        try
+        {
             con = getConection();
             ps = con.prepareStatement("INSERT INTO usuarios (nombre,contrasena,permiso) VALUES(?,?,?)");
             ps.setString(1, nuevo.getTxtaddnombre());
-            ps.setString(2, nuevo.getTxtaddpass());           
-            ps.setInt(3, 0);            
+            ps.setString(2, nuevo.getTxtaddpass());
+            ps.setInt(3, 0);
             
-            con.close();       
+            int res= ps.executeUpdate();            
+            con.close();
+            
+        }catch(Exception e)
+        {
+            System.err.println(e);
+        }      
     }
     
     public boolean log_in(String nuevo) throws Exception

@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
@@ -43,8 +44,8 @@ public class Agregar_Producto extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtaddpventa = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bagregar = new javax.swing.JButton();
+        bregresar = new javax.swing.JButton();
         spinneraddcantidad = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,12 +98,12 @@ public class Agregar_Producto extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cantidad");
 
-        jButton1.setText("Agregar");
+        bagregar.setText("Agregar");
 
-        jButton2.setText("Regresar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bregresar.setText("Regresar");
+        bregresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bregresarActionPerformed(evt);
             }
         });
 
@@ -114,11 +115,11 @@ public class Agregar_Producto extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(518, 518, 518))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(spinneraddcantidad)
@@ -145,7 +146,7 @@ public class Agregar_Producto extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bregresar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(65, 65, 65)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -171,7 +172,7 @@ public class Agregar_Producto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spinneraddcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(135, Short.MAX_VALUE))
         );
 
@@ -198,9 +199,9 @@ public class Agregar_Producto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtaddpcompraActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bregresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bregresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bregresarActionPerformed
 
     private void txtaddidentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddidentificadorActionPerformed
         // TODO add your handling code here:
@@ -247,9 +248,9 @@ public class Agregar_Producto extends javax.swing.JFrame {
         return cantidad;
     }
 
-    public int getTxtaddpcompra() {
-        int pcompra;
-        pcompra = Integer.parseInt(txtaddpcompra.getText());
+    public float getTxtaddpcompra() {
+        float pcompra;
+        pcompra = Float.parseFloat(txtaddpcompra.getText());
         return pcompra;
     }
 
@@ -265,9 +266,9 @@ public class Agregar_Producto extends javax.swing.JFrame {
         return marca;
     }
 
-    public int getTxtaddpventa() {
-        int pventa;
-        pventa = Integer.parseInt(txtaddpventa.getText());
+    public float getTxtaddpventa() {
+        float pventa;
+        pventa = Float.parseFloat(txtaddpventa.getText());
         return pventa;
     }
 
@@ -276,12 +277,20 @@ public class Agregar_Producto extends javax.swing.JFrame {
         nombre = txtaddnombre.getText();
         return nombre;
     }
+
+    public JButton getBagregar() {
+        return bagregar;
+    }
+
+    public JButton getBregresar() {
+        return bregresar;
+    }
     
     
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bagregar;
+    private javax.swing.JButton bregresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

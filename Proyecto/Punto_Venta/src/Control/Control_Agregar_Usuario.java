@@ -41,7 +41,7 @@ public class Control_Agregar_Usuario implements ActionListener
                 
                 try {
                     usuario.agregar_usuario(Nuser);
-                    JOptionPane.showMessageDialog(null, "El usuario fue agregado exitosamente");
+                    //JOptionPane.showMessageDialog(null, "El usuario fue agregado exitosamente");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error al guardar persona");
                     System.out.println(ex);
