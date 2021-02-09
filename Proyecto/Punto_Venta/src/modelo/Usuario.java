@@ -56,9 +56,10 @@ public class Usuario {
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-            JOptionPane.showMessageDialog(null, "conexion exitosa");
+            
         }catch(Exception e)
         {
+            JOptionPane.showMessageDialog(null, "Error en la conexion por favor vuelva a intentar");
             System.out.println(e);
         }
         return con;
@@ -74,20 +75,7 @@ public class Usuario {
             ps.setString(3, nuevo.getTxtaddmarca());
             ps.setFloat(4, nuevo.getTxtaddpcompra());
             ps.setFloat(5, nuevo.getTxtaddpventa());
-            ps.setInt(6, nuevo.getSpinneraddcantidad());            
-            
-            int res= ps.executeUpdate();
-            
-            if(res>0)
-            {
-                JOptionPane.showMessageDialog(null, "Persona guardada");
-                //limpiarcajas();
-            }else
-            {
-                JOptionPane.showMessageDialog(null, "Error al guardar persona");
-                //limpiarcajas();
-            }
-            
+            ps.setInt(6, nuevo.getSpinneraddcantidad());                       
             con.close();      
     }
     
