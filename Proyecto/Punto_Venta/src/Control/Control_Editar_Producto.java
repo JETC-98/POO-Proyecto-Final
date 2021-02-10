@@ -26,10 +26,11 @@ public class Control_Editar_Producto implements ActionListener{
         this.vista.getbEditar().addActionListener(this);
         this.vista.getbRegresar().addActionListener(this);
     }
-    
+    @Override
     public void actionPerformed(ActionEvent e){
     
         if(vista.getbEditar()==e.getSource()){
+            System.out.println("presionando boton");
             String id=vista.txtId.getText();
             String nombre=vista.txtNombre.getText();
             String marca=vista.txtMarca.getText();
@@ -41,7 +42,7 @@ public class Control_Editar_Producto implements ActionListener{
             try {
                 user.editar_producto(id, nombre, marca, precioCompra, precioVenta);
             } catch (Exception ex) {
-                Logger.getLogger(Control_Editar_Producto.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
             }
             
         }

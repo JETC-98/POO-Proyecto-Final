@@ -75,6 +75,7 @@ public class Control_menu implements ActionListener{
         if(menu_principal.getBedit_producto()==ae.getSource())
         {
             Editar_Producto editproduct = new Editar_Producto();
+            Control_Editar_Producto cedit=new Control_Editar_Producto(editproduct);
             editproduct.setVisible(true);
             
             

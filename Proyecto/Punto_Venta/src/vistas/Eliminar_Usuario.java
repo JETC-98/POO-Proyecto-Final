@@ -182,12 +182,15 @@ public class Eliminar_Usuario extends javax.swing.JFrame {
         return bregresar;
     }
 
-    public JPasswordField getTxtadminpass() {
-        return txtadminpass;
+    public String getTxtadminpass() {
+        String pass=new String(txtadminpass.getPassword());
+        return pass;
     }
 
-    public JTextField getTxtnombre() {
-        return txtnombre;
+    public String getTxtnombre() {
+        String nombre;
+        nombre=txtnombre.getText();
+        return nombre;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

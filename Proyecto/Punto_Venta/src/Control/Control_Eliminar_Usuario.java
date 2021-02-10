@@ -7,6 +7,10 @@ package Control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
 import vistas.Eliminar_Usuario;
 import vistas.Menu;
 
@@ -31,7 +35,26 @@ public class Control_Eliminar_Usuario implements ActionListener{
         
         if(elimuser.getBdeleteuser()==e.getSource())
         {
-            
+            String fallos="Fallo en la base de datos";
+            Usuario usuario = new Usuario();
+            try {
+                fallos=usuario.eliminar_usuario(elimuser.getTxtnombre(), elimuser.getTxtadminpass());
+            } catch (Exception ex) {
+                System.out.println("Fallo T-T");
+                System.out.println(ex);
+            }
+            if(fallos.equalsIgnoreCase("contrasena"))
+            {
+                JOptionPane.showMessageDialog(null, "La contraseña es incorrecta");
+            }
+            else if(fallos.equalsIgnoreCase("nombre"))
+            {
+                JOptionPane.showMessageDialog(null, "No existe ese usuario");
+            }
+            else if(fallos.equalsIgnoreCase("perfecto"))
+            {
+                JOptionPane.showMessageDialog(null, "Se a eliminado el usuario");
+            }
         }
         if(elimuser.getBregresar()==e.getSource())
         {

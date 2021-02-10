@@ -85,7 +85,8 @@ public class Usuario {
     {
         Connection con= null;
             con = getConection();
-            ps = con.prepareStatement("UPDATE productos SET nombre='"+nombre+"',marca='"+marca+"',precioCompra="+precioCompra+",precioVenta="+precioVenta+" Where id="+id);             
+            ps = con.prepareStatement("UPDATE productos SET nombre='"+nombre+"',marca='"+marca+"',compra="+precioCompra+",venta="+precioVenta+" Where id="+id);             
+            ps.executeUpdate();
             con.close();      
     }
     
@@ -210,7 +211,7 @@ public class Usuario {
         
         if(rs.next())
         {
-            ps = con.prepareStatement("DELETE * FROM usuarios WHERE nombre = ?");
+            ps = con.prepareStatement("DELETE FROM usuarios WHERE nombre = ?");
             ps.setString(1, usuario);
             flag2 = ps.executeUpdate();
             if(flag2>0)
