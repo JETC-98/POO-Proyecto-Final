@@ -63,7 +63,7 @@ public class Login extends javax.swing.JFrame {
         bingresar.setText("Ingresar");
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Contraseña");
 
         jLabel4.setText("jLabel4");
 

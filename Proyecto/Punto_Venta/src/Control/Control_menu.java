@@ -13,6 +13,7 @@ import vistas.Borrar_Producto;
 import vistas.Editar_Producto;
 import vistas.Eliminar_Usuario;
 import vistas.Inventario;
+import vistas.Login;
 import vistas.Menu;
 import vistas.Reporte_de_Ventas;
 import vistas.Ventas;
@@ -46,9 +47,7 @@ public class Control_menu implements ActionListener{
         {
             Ventas venta=new Ventas();
             Control_ventas cventas=new Control_ventas(venta);
-            venta.setVisible(true);
-            
-            
+            venta.setVisible(true);                        
         }
         
         if(menu_principal.getBreporte_ventas()== ae.getSource()) 
@@ -100,7 +99,13 @@ public class Control_menu implements ActionListener{
             Control_Eliminar_Usuario celimuser=new Control_Eliminar_Usuario(usuario);
             usuario.setVisible(true);
             
-        }        
+        }
+        if(menu_principal.getBcerrar_sesion()==ae.getSource())
+        {
+            Login login = new Login();
+            Control_login clogin = new Control_login(login);
+            login.setVisible(true);
+        }
     }
     
 }
