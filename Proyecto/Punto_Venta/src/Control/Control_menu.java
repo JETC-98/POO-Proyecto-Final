@@ -96,6 +96,7 @@ public class Control_menu implements ActionListener{
         if(menu_principal.getBborrar_user()==ae.getSource())
         {
             Eliminar_Usuario usuario=new Eliminar_Usuario();
+            Control_Eliminar_Usuario celimuser=new Control_Eliminar_Usuario(usuario);
             usuario.setVisible(true);
             
         }        

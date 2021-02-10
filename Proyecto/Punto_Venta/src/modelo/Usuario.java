@@ -5,17 +5,16 @@
  */
 package modelo;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
+//import java.sql.Connection;
+//import java.sql.Date;
+//import java.sql.DriverManager;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
+//import javax.swing.JOptionPane;
 import vistas.Agregar_Producto;
 import vistas.Agregar_Usuario;
 import vistas.Login;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +23,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Daniel
+ * @author black
  */
 public class Usuario {
     
@@ -150,11 +149,7 @@ public class Usuario {
     public int isAdmin() {
         return admin;
     }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-    
+   
     public JTable addlista_de_compras(JTable tabla,Producto producto,int cantidad)
     {
         float total= producto.getCosto_Venta()*cantidad;
@@ -193,4 +188,39 @@ public class Usuario {
         
         return stotal;
     }
+    
+    public String eliminar_usuario(String usuario,String pass) throws Exception
+    {
+        String flag="perfecto";
+        int flag2;
+        
+        Connection con=null;
+        con = getConection();
+        ps = con.prepareStatement("SELECT * FROM usuarios WHERE contrasena = ?");
+        ps.setString(1, pass);
+        rs = ps.executeQuery();
+        
+        if(rs.next())
+        {
+            ps = con.prepareStatement("DELETE * FROM usuarios WHERE nombre = ?");
+            ps.setString(1, usuario);
+            flag2 = ps.executeUpdate();
+            if(flag2>0)
+            {
+                flag = "perfecto";
+            }else
+            {
+                flag="nombre";
+            }
+        }else{
+            flag="contrasena";
+        }
+        
+        con.close();        
+        return flag;
+    }
+    
+    public String getContrasena() {
+        return contrasena;
+    }    
 }
