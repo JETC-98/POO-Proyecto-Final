@@ -5,6 +5,12 @@
  */
 package modelo;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Daniel
@@ -24,6 +30,81 @@ public class Cliente {
         this.RFC = RFC;
         this.telefono = telefono;
         System.out.println("esto es una prueba");
+    }
+
+    public Cliente() {
+         //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+    
+    public void hacerFactura(String nombre, String direccion, String RFC, String telefono){
+    
+         try{
+            File archivo;
+            FileWriter w;
+            BufferedWriter bw;
+            PrintWriter wf;
+        
+            archivo=new File("Factura"+nombre+".txt");
+            w= new FileWriter(archivo);
+            bw=new BufferedWriter(w);
+            wf=new PrintWriter(bw);
+            
+            wf.println("Nombre: "+ nombre);
+            wf.println("Dirección: "+ direccion);
+            wf.println("RFC: "+ RFC);
+            wf.println("Telefono: "+ telefono);
+            
+            wf.close();
+            bw.close();
+            
+            archivo.createNewFile();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "NO se genero la factura T-T");
+        }
+        
+         
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getRFC() {
+        return RFC;
+    }
+
+    public void setRFC(String RFC) {
+        this.RFC = RFC;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
     
     
