@@ -60,6 +60,27 @@ public class Usuario {
         return con;
     }    
     
+    public boolean log_in(String nuevo) throws Exception
+    {
+        
+        boolean entrar=false;
+        Connection con=null;
+            con = getConection();
+            ps = con.prepareStatement("SELECT * FROM usuarios WHERE nombre = ?");
+            ps.setString(1, nuevo);
+            rs = ps.executeQuery();
+            if(rs.next())
+            {                               
+                contrasena=rs.getString("contrasena");
+                admin=rs.getInt("permiso");
+                entrar = true;
+            }
+                        
+            con.close();
+            
+        return entrar;
+    }    
+    
     public void agregar_producto(Agregar_Producto nuevo) throws Exception
     {
         Connection con= null;
@@ -71,15 +92,6 @@ public class Usuario {
             ps.setFloat(4, nuevo.getTxtaddpcompra());
             ps.setFloat(5, nuevo.getTxtaddpventa());
             ps.setInt(6, nuevo.getSpinneraddcantidad());  
-            ps.executeUpdate();
-            con.close();      
-    }
-    
-    public void editar_producto(int id, String nombre, String marca, float precioCompra, float precioVenta) throws Exception
-    {
-        Connection con= null;
-            con = getConection();
-            ps = con.prepareStatement("UPDATE productos SET nombre='"+nombre+"',marca='"+marca+"',compra="+precioCompra+",venta="+precioVenta+" Where id="+id);             
             ps.executeUpdate();
             con.close();      
     }
@@ -102,100 +114,23 @@ public class Usuario {
         {
             System.err.println(e);
         }      
-    }
+    }    
     
-    public boolean log_in(String nuevo) throws Exception
-    {
-        
-        boolean entrar=false;
-        Connection con=null;
-            con = getConection();
-            ps = con.prepareStatement("SELECT * FROM usuarios WHERE nombre = ?");
-            ps.setString(1, nuevo);
-            rs = ps.executeQuery();
-            if(rs.next())
-            {                               
-                contrasena=rs.getString("contrasena");
-                admin=rs.getInt("permiso");
-                entrar = true;
-            }
-                        
-            con.close();
-            
-        return entrar;
-    }
-    
-    public Producto getproduct(int id) throws Exception
-    {        
-        Producto p;
-        Connection con=null;
-            con = getConection();
-            ps = con.prepareStatement("SELECT * FROM productos WHERE id = ?");
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-            
-            if(rs.next())
-            {                               
-                p=new Producto(rs.getInt("id"), rs.getString("nombre"), rs.getString("marca"), rs.getFloat("compra"), rs.getFloat("venta"), rs.getInt("cantidad"));
-                                
-            }else
-            {
-                p=new Producto(0,null,null,0,0,0);
-                
-            }
-            
-            con.close();        
-            
-            return p;
-    } 
-
-    public int isAdmin() {
-        return admin;
-    }
-   
     public JTable addlista_de_compras(JTable tabla,Producto producto,int cantidad)
     {
         float total= producto.getCosto_Venta()*cantidad;
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         model.addRow(new Object[]{producto.getNombre(), producto.getMarca(), producto.getCosto_Venta(), cantidad,total});
         return tabla;
-    }
-    public JTable preview_edit_product(JTable tabla,Producto producto)
+    }    
+    
+    public JTable addlista_de_compras(JTable tabla,Producto producto)
     {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-        model.addRow(new Object[]{producto.getNombre(), producto.getMarca(), producto.getCosto_Compra(), producto.getCosto_Venta()});
+        model.getDataVector().removeAllElements();
+        model.addRow(new Object[]{producto.getId(),producto.getNombre(), producto.getMarca(),producto.getCosto_Compra(), producto.getCosto_Venta(),producto.getCantidad()});
         return tabla;
     }    
-    public JTable removelista_de_compras(JTable tabla)
-    {
-        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-        int row = tabla.getSelectedRow();
-        if(row==-1)
-        {
-            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun objeto");
-        }else{
-            model.removeRow(row);
-        }
-                
-        return tabla;
-    }
-    
-    public String close_sale(JTable tabla)
-    {
-        float total=0;
-        String stotal;
-        int rownum;
-        rownum = tabla.getRowCount();
-        
-        for(int i=0;i<rownum;i++)
-        {
-            total=total + Float.parseFloat((String.valueOf(tabla.getValueAt(i, 4))))  ;
-        }
-        
-        stotal= String.valueOf(total);
-        
-        return stotal;
-    }
     
     public String eliminar_usuario(String usuario,String pass) throws Exception
     {
@@ -226,9 +161,141 @@ public class Usuario {
         
         con.close();        
         return flag;
+    }    
+    
+    public JTable removelista_de_compras(JTable tabla)
+    {
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        int row = tabla.getSelectedRow();
+        if(row==-1)
+        {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun objeto");
+        }else{
+            model.removeRow(row);
+        }
+                
+        return tabla;
+    } 
+    
+    public String close_sale(JTable tabla)
+    {
+        float total=0;
+        String stotal;
+        int rownum;
+        rownum = tabla.getRowCount();
+        
+        for(int i=0;i<rownum;i++)
+        {
+            total=total + Float.parseFloat((String.valueOf(tabla.getValueAt(i, 4))))  ;
+        }
+        
+        stotal= String.valueOf(total);
+        
+        return stotal;
+    }    
+    
+    public JTable setinventario(JTable tabla,String nombre) throws Exception
+    {
+        Connection con=null;
+        con = getConection();
+        ps = con.prepareStatement("SELECT id,nombre,marca,compra,venta,cantidad FROM productos WHERE nombre = ?");
+        ps.setString(1, nombre);
+        rs = ps.executeQuery();
+        
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model.getDataVector().removeAllElements();
+        while(rs.next())
+        {
+            model.addRow(new Object[]{rs.getInt("id"), rs.getString("nombre"), rs.getString("marca"), rs.getFloat("compra"),rs.getFloat("venta"),rs.getInt("cantidad")});
+        }
+        con.close();        
+        
+        return tabla;        
+    }      
+    
+    public JTable setinventariomarca(JTable tabla,String marca) throws Exception
+    {
+        Connection con=null;
+        con = getConection();
+        ps = con.prepareStatement("SELECT id,nombre,marca,compra,venta,cantidad FROM productos WHERE marca = ?");
+        ps.setString(1, marca);
+        rs = ps.executeQuery();
+        
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model.getDataVector().removeAllElements();
+        while(rs.next())
+        {
+            model.addRow(new Object[]{rs.getInt("id"), rs.getString("nombre"), rs.getString("marca"), rs.getFloat("compra"),rs.getFloat("venta"),rs.getInt("cantidad")});
+        }
+        con.close();        
+        
+        return tabla;
     }
+    
+    public JTable getallinventario(JTable tabla) throws Exception
+    {
+        Connection con=null;
+        con = getConection();
+        ps = con.prepareStatement("SELECT id,nombre,marca,compra,venta,cantidad FROM productos");
+        rs = ps.executeQuery();
+        
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model.getDataVector().removeAllElements();
+        while(rs.next())
+        {
+            model.addRow(new Object[]{rs.getInt("id"), rs.getString("nombre"), rs.getString("marca"), rs.getFloat("compra"),rs.getFloat("venta"),rs.getInt("cantidad")});
+        }
+        con.close();        
+        
+        return tabla;
+    }
+    
+    public void editar_producto(int id, String nombre, String marca, float precioCompra, float precioVenta) throws Exception
+    {
+        Connection con= null;
+            con = getConection();
+            ps = con.prepareStatement("UPDATE productos SET nombre='"+nombre+"',marca='"+marca+"',compra="+precioCompra+",venta="+precioVenta+" Where id="+id);             
+            ps.executeUpdate();
+            con.close();      
+    }
+          
+    public Producto getproduct(int id) throws Exception
+    {        
+        Producto p;
+        Connection con=null;
+            con = getConection();
+            ps = con.prepareStatement("SELECT * FROM productos WHERE id = ?");
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            
+            if(rs.next())
+            {                               
+                p=new Producto(rs.getInt("id"), rs.getString("nombre"), rs.getString("marca"), rs.getFloat("compra"), rs.getFloat("venta"), rs.getInt("cantidad"));
+                                
+            }else
+            {
+                p=new Producto(0,null,null,0,0,0);
+                
+            }
+            
+            con.close();        
+            
+            return p;
+    } 
+  
+    public JTable preview_edit_product(JTable tabla,Producto producto)
+    {
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model.addRow(new Object[]{producto.getNombre(), producto.getMarca(), producto.getCosto_Compra(), producto.getCosto_Venta()});
+        return tabla;
+    }    
+   
+    public int isAdmin() {
+        return admin;
+    }    
     
     public String getContrasena() {
         return contrasena;
     }    
+    
 }

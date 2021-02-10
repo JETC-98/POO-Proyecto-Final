@@ -58,6 +58,7 @@ public class Control_menu implements ActionListener{
         if(menu_principal.getBinventario()== ae.getSource()) 
         {
             Inventario inventario=new Inventario();
+            Control_Inventario cinventario = new Control_Inventario(inventario);
             inventario.setVisible(true);
             
         }
