@@ -35,7 +35,7 @@ public class Control_Editar_Producto implements ActionListener{
     
         if(vista.getbEditar()==e.getSource()){
             System.out.println("presionando boton");
-            String id=vista.txtId.getText();
+            int id=Integer.parseInt(vista.txtId.getText());
             String nombre=vista.txtNombre.getText();
             String marca=vista.txtMarca.getText();
             float precioCompra=Float.parseFloat(vista.txtPrecioCompra.getText());

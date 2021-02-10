@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vistas.Agregar_Producto;
 import vistas.Agregar_Usuario;
-import vistas.Borrar_Producto;
 import vistas.Editar_Producto;
 import vistas.Eliminar_Usuario;
 import vistas.Inventario;
@@ -30,7 +29,6 @@ public class Control_menu implements ActionListener{
         menu_principal=menu;
         menu_principal.getBadd_producto().addActionListener(this);
         menu_principal.getBadd_user().addActionListener(this);
-        menu_principal.getBborrar_producto().addActionListener(this);
         menu_principal.getBborrar_user().addActionListener(this);
         menu_principal.getBcerrar_sesion().addActionListener(this);
         menu_principal.getBedit_producto().addActionListener(this);
@@ -77,12 +75,6 @@ public class Control_menu implements ActionListener{
             Control_Editar_Producto cedit=new Control_Editar_Producto(editproduct);
             editproduct.setVisible(true);
             
-            
-        }
-        if(menu_principal.getBborrar_producto()==ae.getSource())
-        {
-            Borrar_Producto borrarproducto=new Borrar_Producto();
-            borrarproducto.setVisible(true);
             
         }
         if(menu_principal.getBadd_user()==ae.getSource())

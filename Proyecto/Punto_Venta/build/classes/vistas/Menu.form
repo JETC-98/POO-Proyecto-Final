@@ -53,25 +53,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="bedit_producto" pref="150" max="32767" attributes="0"/>
-                              <Component id="bventas" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="bedit_producto" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="breporte_ventas" pref="150" max="32767" attributes="0"/>
-                              <Component id="bborrar_producto" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="badd_producto" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="binventario" max="32767" attributes="0"/>
-                              <Component id="badd_user" pref="150" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="badd_user" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="badd_producto" pref="150" max="32767" attributes="0"/>
-                              <Component id="bborrar_user" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="bborrar_user" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="536" max="-2" attributes="0"/>
@@ -79,6 +67,14 @@
                               <Component id="jLabel1" max="32767" attributes="0"/>
                               <Component id="bcerrar_sesion" max="32767" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
+                          <Component id="bventas" min="-2" pref="150" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="breporte_ventas" min="-2" pref="150" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="binventario" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="112" max="32767" attributes="0"/>
@@ -95,14 +91,15 @@
                       <Component id="bventas" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="breporte_ventas" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="binventario" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="badd_producto" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="bborrar_user" pref="150" max="32767" attributes="0"/>
+                      <Component id="bborrar_user" max="32767" attributes="0"/>
                       <Component id="badd_user" max="32767" attributes="0"/>
-                      <Component id="bborrar_producto" max="32767" attributes="0"/>
-                      <Component id="bedit_producto" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bedit_producto" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="badd_producto" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="88" max="32767" attributes="0"/>
                   <Component id="bcerrar_sesion" min="-2" pref="41" max="-2" attributes="0"/>
@@ -146,11 +143,6 @@
         <Component class="javax.swing.JButton" name="bedit_producto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar Producto"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="bborrar_producto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Borrar Producto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="badd_user">

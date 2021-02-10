@@ -58,7 +58,6 @@ public class Control_login implements ActionListener{
                             
                             nuevo.getBadd_producto().setVisible(false);
                             nuevo.getBadd_user().setVisible(false);
-                            nuevo.getBborrar_producto().setVisible(false);
                             nuevo.getBborrar_user().setVisible(false);                            
                             nuevo.getBedit_producto().setVisible(false);
                             

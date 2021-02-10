@@ -26,9 +26,9 @@ public class Usuario {
     private int admin;
     private String contrasena;
     
-    public static final String URL = "jdbc:mysql://localhost:3306/dubai";
+    public static final String URL = "jdbc:mysql://localhost:3306/Escuela";
     public static final String USERNAME = "root";
-    public static final String PASSWORD = "1234";    
+    public static final String PASSWORD = "root";    
     PreparedStatement ps;
     ResultSet rs;
     
@@ -49,7 +49,7 @@ public class Usuario {
         Connection con = null;
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(URL,USERNAME,PASSWORD);
             
         }catch(Exception e)
@@ -75,7 +75,7 @@ public class Usuario {
             con.close();      
     }
     
-    public void editar_producto(String id, String nombre, String marca, float precioCompra, float precioVenta) throws Exception
+    public void editar_producto(int id, String nombre, String marca, float precioCompra, float precioVenta) throws Exception
     {
         Connection con= null;
             con = getConection();

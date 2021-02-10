@@ -1,0 +1,9 @@
+Nombre: Josue
+Dirección: Recursamiento
+RFC: ni idea
+Telefono: 999912345
+paleton    emperador    22.2    1    22.2     
+paleton    emperador    22.2    2    44.4     
+paleton    emperador    22.2    3    66.600006     
+paleton    emperador    22.2    4    88.8     
+EL TOTAL DE LA COMPRA ES DE: 222.00002

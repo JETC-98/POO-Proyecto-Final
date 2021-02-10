@@ -7,8 +7,10 @@ package Control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JTable;
 import modelo.Cliente;
 import vistas.Datos_del_Cliente;
+import vistas.Ventas;
 
 /**
  *
@@ -17,10 +19,10 @@ import vistas.Datos_del_Cliente;
 public class Control_Datos_Del_Cliente implements ActionListener{
     
     Datos_del_Cliente vista;
-
-    public Control_Datos_Del_Cliente(Datos_del_Cliente vista) {
+    JTable tabla;
+    public Control_Datos_Del_Cliente(Datos_del_Cliente vista,JTable tabla) {
         this.vista = vista;
-        
+        this.tabla = tabla;
         this.vista.getbHacerFactura().addActionListener(this);
         this.vista.getbNoHacerFactura().addActionListener(this);
     }
@@ -36,13 +38,15 @@ public class Control_Datos_Del_Cliente implements ActionListener{
             String rfc=vista.txtRfc.getText();
             String telefono=vista.getTxtTelefono();
             
-            cliente.hacerFactura(nombre, direccion, rfc, telefono);
+            cliente.hacerFactura(nombre, direccion, rfc, telefono,tabla);
             vista.dispose();
             
             
         }
         if(vista.getbNoHacerFactura()==e.getSource()){
             vista.dispose();
+            Ventas venta = new Ventas();
+            Control_ventas cventas=new Control_ventas(venta);
         }
     }
     

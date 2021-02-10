@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -38,9 +39,12 @@ public class Cliente {
 
    
     
-    public void hacerFactura(String nombre, String direccion, String RFC, String telefono){
+    public void hacerFactura(String nombre, String direccion, String RFC, String telefono,JTable tabla){
     
          try{
+             Usuario usuario=new Usuario();
+             float total=Float.parseFloat(usuario.close_sale(tabla));
+             
             File archivo;
             FileWriter w;
             BufferedWriter bw;
@@ -56,6 +60,18 @@ public class Cliente {
             wf.println("RFC: "+ RFC);
             wf.println("Telefono: "+ telefono);
             
+            int rownum = tabla.getRowCount();
+            for(int i=0;i<rownum;i++)
+            {
+                for (int j=0;j<5;j++)
+                {
+                    wf.print(String.valueOf(tabla.getValueAt(i, j)));
+                    wf.print("    ");
+                }
+                wf.println(" ");
+                
+            }
+            wf.println("EL TOTAL DE LA COMPRA ES DE: "+total);
             wf.close();
             bw.close();
             

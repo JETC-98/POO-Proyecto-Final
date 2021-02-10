@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Producto;
 import modelo.Usuario;
+import vistas.Datos_del_Cliente;
 import vistas.Menu;
 import vistas.Ventas;
 
@@ -31,6 +32,7 @@ public class Control_ventas implements ActionListener
         this.venta.getBclosesale().addActionListener(this);
         this.venta.getBdeleteproduct().addActionListener(this);
         this.venta.getBregresar().addActionListener(this);
+        this.venta.getBfacturar().addActionListener(this);
     }
     
 
@@ -75,7 +77,6 @@ public class Control_ventas implements ActionListener
                             
                 nuevo.getBadd_producto().setVisible(false);
                 nuevo.getBadd_user().setVisible(false);
-                nuevo.getBborrar_producto().setVisible(false);
                 nuevo.getBborrar_user().setVisible(false);                            
                 nuevo.getBedit_producto().setVisible(false);
                 Control_menu cmenu= new Control_menu(nuevo);
@@ -89,6 +90,12 @@ public class Control_ventas implements ActionListener
                 nuevo.setVisible(true);
                 venta.dispose();
             }
+        }
+        if(venta.getBfacturar()==e.getSource())
+        {
+            Datos_del_Cliente datos=new Datos_del_Cliente();
+            Control_Datos_Del_Cliente cdatos=new Control_Datos_Del_Cliente(datos,venta.getjTable1());
+            datos.setVisible(true);
         }
         
         
