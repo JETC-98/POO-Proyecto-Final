@@ -5,12 +5,6 @@
  */
 package modelo;
 
-//import java.sql.Connection;
-//import java.sql.Date;
-//import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import javax.swing.JOptionPane;
 import vistas.Agregar_Producto;
 import vistas.Agregar_Usuario;
 import vistas.Login;
@@ -166,7 +160,12 @@ public class Usuario {
         model.addRow(new Object[]{producto.getNombre(), producto.getMarca(), producto.getCosto_Venta(), cantidad,total});
         return tabla;
     }
-    
+    public JTable preview_edit_product(JTable tabla,Producto producto)
+    {
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model.addRow(new Object[]{producto.getNombre(), producto.getMarca(), producto.getCosto_Compra(), producto.getCosto_Venta()});
+        return tabla;
+    }    
     public JTable removelista_de_compras(JTable tabla)
     {
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
